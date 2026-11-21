@@ -1,0 +1,331 @@
+<!doctype html>
+<!--
+THESIS: Eski ustalar yeni kısayolları gösteriyor. Klasik eserler kobalt üstüne halftone basılır, yanlarında gerçek Instagram akışı durur. Reddedilen: link ağacı düğme listesi.
+OWN-WORLD: Kobalt #2433E0 alanlar, lacivert ve krem halftone noktaları, Young Serif, tek yırtık delik, kırmızı sadece yorum kelimesinde.
+STORY: Kerem kim (yapay zekânın suyunu sıkan biri), hangi ücretsiz rehberi alırım (yorum kelimesiyle ya da buradan), neden güveneyim (önce kendisi kuruyor), takip et.
+FIRST VIEWPORT: Kobalt gökyüzü halftone. Solda üstte büyük başlık ve iki buton. Sağ altta Augustus heykeli, uzanan eli başlığa ve butonlara bakıyor.
+FORM: Kullanıcının sabitlediği uisabor kolaj dünyası (pinned), staging: heykel + metin + üç rehber satırı + kanıt deliği + kapanış.
+-->
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kerem Özdemir</title>
+<meta name="description" content="Yapay zekânın suyunu sıkıyoruz. Her gün bir yapay zekâ ipucu ve ücretsiz rehberler.">
+<meta name="theme-color" content="#2433E0">
+<style>
+@font-face{font-family:"Young Serif";src:url(YoungSerif.ttf) format("truetype");font-display:swap}
+:root{
+  --kobalt:#2433E0;--lacivert:#14213D;--krem:#F2E8D5;--kirmizi:#C8102E;
+  --krem-soluk:rgba(242,232,213,.82);--lacivert-soluk:rgba(20,33,61,.74);
+  --serif:"Young Serif",Georgia,serif;
+  --ui:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --kenar:clamp(20px,5vw,64px);
+  --ease:cubic-bezier(.16,1,.3,1);
+}
+*{box-sizing:border-box;margin:0}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--kobalt);color:var(--krem);font-family:var(--serif);font-size:1.0625rem;line-height:1.5;font-variant-numeric:lining-nums;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+canvas.ht{display:block;width:100%;height:100%}
+.gizli{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* butonlar */
+.btn{display:inline-flex;align-items:center;gap:.5em;min-height:48px;padding:.7em 1.15em;border-radius:6px;font:inherit;font-size:1rem;line-height:1.1;text-decoration:none;transition:transform .1s ease-out,background-color .2s,color .2s;-webkit-tap-highlight-color:transparent}
+.btn:active{transform:scale(.97)}
+.btn:focus-visible,a:focus-visible{outline:3px solid var(--krem);outline-offset:3px}
+.btn-dolu{background:var(--krem);color:var(--lacivert)}
+.btn-dolu:hover{background:#fff}
+.btn-cizgi{border:1.5px solid var(--krem);color:var(--krem)}
+.btn-cizgi:hover{background:rgba(242,232,213,.12)}
+.ok{display:inline-block;transition:transform .25s var(--ease)}
+a:hover .ok{transform:translateX(4px)}
+
+/* hero */
+.hero{position:relative;min-height:100svh;overflow:hidden;isolation:isolate}
+.hero .gok{position:absolute;inset:0;z-index:-2}
+.ust{position:relative;z-index:3;display:flex;justify-content:space-between;align-items:center;padding:16px var(--kenar) 0}
+.ad{display:inline-flex;align-items:center;gap:10px;background:var(--krem);color:var(--lacivert);border-radius:6px;padding:8px 14px 8px 8px;font-size:1rem;text-decoration:none}
+.ad i{display:grid;place-items:center;width:28px;height:28px;border-radius:4px;background:var(--kobalt);color:var(--krem);font-style:normal;font-size:.95rem}
+.ust .btn{min-height:44px;padding:.55em 1em}
+.hero-metin{position:relative;z-index:2;padding:clamp(36px,7vh,96px) var(--kenar) 0;max-width:min(100%,940px)}
+.hero h1{font-weight:400;font-size:clamp(2.75rem,11.5vw,6rem);line-height:1;letter-spacing:-.025em;text-wrap:balance}
+.hero p{margin-top:.9em;max-width:26ch;font-size:clamp(1.0625rem,2.6vw,1.3rem);color:var(--krem-soluk);text-wrap:pretty}
+.cagri{display:flex;flex-wrap:wrap;gap:10px;margin-top:1.6em}
+.hero canvas.heykel{width:auto;position:absolute;z-index:1;right:-64px;bottom:-19svh;height:min(70svh,980px);aspect-ratio:640/1093;pointer-events:none;filter:drop-shadow(-10px 12px 0 rgba(20,33,61,.38))}
+.kaynakca-isaret{position:absolute;z-index:2;right:var(--kenar);bottom:14px;font-size:.75rem;color:var(--krem-soluk);font-family:var(--ui)}
+
+/* rehberler */
+.rehberler{background:var(--krem);color:var(--lacivert);padding:clamp(72px,12vw,150px) var(--kenar) clamp(56px,9vw,120px)}
+.bolum-bas{max-width:860px}
+.bolum-bas h2{font-weight:400;font-size:clamp(2.1rem,7vw,4.25rem);line-height:1.04;letter-spacing:-.02em;text-wrap:balance}
+.bolum-bas p{margin-top:.9em;max-width:52ch;color:var(--lacivert-soluk);font-size:clamp(1.0625rem,2.2vw,1.2rem);text-wrap:pretty}
+.liste{list-style:none;padding:0;margin-top:clamp(44px,7vw,96px);display:grid;gap:clamp(56px,9vw,120px)}
+.rehber{display:grid;gap:22px;align-items:center}
+.pano{position:relative;aspect-ratio:4/3;background:var(--kobalt);border-radius:4px;overflow:hidden;box-shadow:0 18px 40px -18px rgba(20,33,61,.55)}
+.pano canvas{position:absolute;inset:0}
+.yorum,.dm{position:absolute;font-family:var(--ui);color:#111;background:#fff;box-shadow:0 10px 24px -10px rgba(10,16,40,.5)}
+.yorum{left:4%;top:6%;display:flex;align-items:center;gap:8px;padding:7px 12px 7px 7px;border-radius:999px;font-size:.78rem}
+.yorum b{font-weight:600}
+.yorum .pp{width:22px;height:22px;border-radius:50%;background:conic-gradient(from 200deg,#c5c9d6,#e9ebf1,#c5c9d6)}
+.dm{right:4%;bottom:5%;width:min(50%,230px);border-radius:16px;padding:10px;font-size:.74rem;line-height:1.3}
+.dm small{display:block;color:#737373;font-size:.7rem;margin-bottom:4px}
+.dm .dm-btn{display:block;margin-top:9px;padding:8px;border-radius:9px;background:#efefef;text-align:center;font-weight:600;color:#0a5be0}
+.rehber-metin .kelime{display:inline-block;font-size:.95rem;color:var(--kirmizi);border-bottom:1.5px solid currentColor;padding-bottom:1px}
+.rehber-metin h3{margin-top:.55em;font-weight:400;font-size:clamp(1.6rem,4.6vw,2.6rem);line-height:1.08;letter-spacing:-.015em;text-wrap:balance}
+.rehber-metin p{margin-top:.6em;max-width:40ch;color:var(--lacivert-soluk);text-wrap:pretty}
+.rehber-metin a{display:inline-flex;align-items:center;gap:.4em;min-height:48px;margin-top:.5em;font-size:1.1rem;text-decoration:underline;text-decoration-thickness:1.5px;text-underline-offset:5px}
+
+/* kanıt */
+.kanit{background:var(--lacivert);padding:clamp(72px,12vw,150px) var(--kenar);display:grid;gap:clamp(40px,6vw,80px);align-items:center}
+.delik-pano{position:relative;aspect-ratio:1/1;max-width:560px;width:100%;background:var(--kobalt);border-radius:4px;overflow:hidden}
+.delik-pano canvas{position:absolute;inset:0}
+.kenar-kagit,.delik{position:absolute;inset:0}
+.kenar-kagit{background:#f6efe2;filter:drop-shadow(0 6px 10px rgba(10,16,40,.45))}
+.delik{background:url(img/rembrandt-goz.jpg) 50% 18%/cover no-repeat;box-shadow:inset 0 0 30px rgba(0,0,0,.55)}
+.kanit h2{font-weight:400;font-size:clamp(2.1rem,6.6vw,4rem);line-height:1.04;letter-spacing:-.02em;text-wrap:balance}
+.defter{list-style:none;padding:0;margin-top:clamp(28px,4vw,44px);border-top:1px solid rgba(242,232,213,.22)}
+.defter li{display:grid;gap:4px;padding:18px 0;border-bottom:1px solid rgba(242,232,213,.22)}
+.defter b{font-weight:400;font-size:clamp(1.3rem,3.2vw,1.6rem);line-height:1.15}
+.defter span{color:var(--krem-soluk);max-width:46ch}
+.okul{margin-top:22px;color:var(--krem-soluk);font-size:.95rem}
+
+/* kapanış */
+.kapanis{position:relative;overflow:hidden;isolation:isolate;padding:clamp(90px,16vw,200px) var(--kenar) clamp(80px,12vw,150px)}
+.kapanis .gok{position:absolute;inset:0;z-index:-1}
+.kapanis h2{font-weight:400;font-size:clamp(2.5rem,9vw,5.5rem);line-height:1;letter-spacing:-.025em;max-width:11ch;text-wrap:balance}
+.kapanis p{margin-top:.8em;max-width:30ch;color:var(--krem-soluk);font-size:clamp(1.0625rem,2.4vw,1.25rem)}
+footer{background:var(--krem);color:var(--lacivert-soluk);padding:28px var(--kenar) calc(28px + env(safe-area-inset-bottom));font-size:.85rem;display:grid;gap:6px}
+footer p{max-width:80ch}
+
+@media (min-width:860px){
+  .hero canvas.heykel{right:4vw;height:min(92svh,1100px)}
+  .hero-metin{padding-top:clamp(70px,13vh,150px)}
+  .hero p{max-width:30ch}
+  .rehber{grid-template-columns:1.15fr .85fr;gap:clamp(40px,5vw,80px)}
+  .rehber:nth-child(even) .pano{order:2}
+  .kanit{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn,.ok{transition:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <canvas class="ht gok" data-src="img/gok.jpg" data-cell="4" data-acik=".66" data-koyu="0" data-guc=".5" data-alt=".45,.95" data-baski aria-hidden="true"></canvas>
+  <nav class="ust" aria-label="Üst menü">
+    <a class="ad" href="#"><i aria-hidden="true">K</i>Kerem Özdemir</a>
+    <a class="btn btn-dolu" href="https://www.instagram.com/itskeremozdemir/">Takip et</a>
+  </nav>
+  <div class="hero-metin">
+    <h1>Yapay zekânın suyunu sıkıyoruz.</h1>
+    <p>Her gün bir yapay zekâ ipucu. Anlattığım her şeyi önce kendim kurup deniyorum.</p>
+    <div class="cagri">
+      <a class="btn btn-dolu" href="#rehberler">Ücretsiz rehberler <span class="ok" aria-hidden="true">&darr;</span></a>
+      <a class="btn btn-cizgi" href="https://www.instagram.com/itskeremozdemir/">Instagram'da takip et</a>
+    </div>
+  </div>
+  <canvas class="ht heykel" data-src="img/augustus.png" data-cell="5.5" data-acik=".48" data-koyu=".42" data-baski aria-hidden="true"></canvas>
+</header>
+
+<main>
+<section class="rehberler" id="rehberler" aria-labelledby="rehber-baslik">
+  <div class="bolum-bas">
+    <h2 id="rehber-baslik">Yoruma tek kelime yaz, rehber DM'ine gelsin.</h2>
+    <p>Videolarımın altında bir anahtar kelime görürsün. Yorumuna yazınca rehberi Instagram'dan otomatik gönderiyorum. Hepsi burada da açık.</p>
+  </div>
+  <ol class="liste">
+    <li class="rehber">
+      <div class="pano">
+        <canvas class="ht" data-src="img/aurora-at.jpg" data-cell="5" data-acik=".5" data-koyu=".3" aria-hidden="true"></canvas>
+        <div class="yorum" aria-hidden="true"><span class="pp"></span><span><b>sen</b> PLAN</span></div>
+        <div class="dm" aria-hidden="true"><small>itskeremozdemir</small>Rehberin hazır. Gün gün plan aşağıda.<span class="dm-btn">Rehberi aç</span></div>
+      </div>
+      <div class="rehber-metin">
+        <span class="kelime">PLAN</span>
+        <h3>17 günde App Store'a</h3>
+        <p>Bir kafenin uygulamasını 17 günde yayına çıkarırken izlediğim gün gün plan.</p>
+        <a href="https://keremozdemir12.github.io/17-gun/">Rehberi aç <span class="ok" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </li>
+    <li class="rehber">
+      <div class="pano">
+        <canvas class="ht" data-src="img/barbaro-isaret.jpg" data-cell="5" data-acik=".5" data-koyu=".3" aria-hidden="true"></canvas>
+        <div class="yorum" aria-hidden="true"><span class="pp"></span><span><b>sen</b> KURGU</span></div>
+        <div class="dm" aria-hidden="true"><small>itskeremozdemir</small>Rehberin hazır. Kural seti aşağıda.<span class="dm-btn">Rehberi aç</span></div>
+      </div>
+      <div class="rehber-metin">
+        <span class="kelime">KURGU</span>
+        <h3>Videolarımı yapay zekâya böyle kurgulatıyorum</h3>
+        <p>Ham çekimden yayına hazır Reels'e: kurgu akışım, kural dosyası şablonu ve teslimden önceki kontrol adımı.</p>
+        <a href="https://keremozdemir12.github.io/kurgu-kurallari/">Rehberi aç <span class="ok" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </li>
+    <li class="rehber">
+      <div class="pano">
+        <canvas class="ht" data-src="img/hermes-bas.jpg" data-cell="5" data-acik=".5" data-koyu=".3" aria-hidden="true"></canvas>
+        <div class="yorum" aria-hidden="true"><span class="pp"></span><span><b>sen</b> GOOGLE</span></div>
+        <div class="dm" aria-hidden="true"><small>itskeremozdemir</small>Rehberin hazır. Üç araç ve ilk deneme önerileri aşağıda.<span class="dm-btn">Rehberi aç</span></div>
+      </div>
+      <div class="rehber-metin">
+        <span class="kelime">GOOGLE</span>
+        <h3>Google'ın ücretsiz 3 yapay zekâ aracı</h3>
+        <p>Her hafta kullandığım Gemini Notebook, Gemini ve Antigravity. Ne işe yaradıkları ve ilk denemen için birer öneri.</p>
+        <a href="https://keremozdemir12.github.io/google-araclari/">Rehberi aç <span class="ok" aria-hidden="true">&rarr;</span></a>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<section class="kanit" aria-labelledby="kanit-baslik">
+  <div class="delik-pano" aria-hidden="true">
+    <canvas class="ht" data-src="img/gok.jpg" data-cell="5" data-acik=".55" data-koyu="0" data-guc=".9"></canvas>
+    <div class="kenar-kagit"></div>
+    <div class="delik"></div>
+  </div>
+  <div>
+    <h2 id="kanit-baslik">Anlattığım her şeyi önce kendim deniyorum.</h2>
+    <ul class="defter">
+      <li><b>17 günde App Store</b><span>Bir kafenin iOS ve Android uygulamasını 17 günde yayına çıkardım.</span></li>
+      <li><b>Kendi DM otomasyonum</b><span>Yorumlara rehber gönderen sistemi kendim kurdum. Bu sayfaya da büyük ihtimalle oradan geldin.</span></li>
+      <li><b>Yapay zekâyla kurgu</b><span>Videolarımı Claude Code ile kurguluyorum: kesim, altyazı, ses efekti.</span></li>
+      <li><b>321GO</b><span>Kendi futbol bilgi oyunum, web'de ve App Store'da.</span></li>
+    </ul>
+    <p class="okul">Boğaziçi Üniversitesi, Yönetim Bilişim Sistemleri son sınıf.</p>
+  </div>
+</section>
+
+<section class="kapanis" aria-labelledby="kapanis-baslik">
+  <canvas class="ht gok" data-src="img/gok.jpg" data-cell="6" data-acik=".62" data-koyu="0" data-guc=".75" data-alt=".55,.98" aria-hidden="true"></canvas>
+  <h2 id="kapanis-baslik">Her gün bir yapay zekâ ipucu.</h2>
+  <p>Kaydet, dene, işine yarasın.</p>
+  <div class="cagri">
+    <a class="btn btn-dolu" href="https://www.instagram.com/itskeremozdemir/">Instagram'da takip et</a>
+    <a class="btn btn-cizgi" href="https://www.tiktok.com/@itskeremozdemir">TikTok</a>
+  </div>
+</section>
+</main>
+
+<footer>
+  <p>Görseller kamu malı: Augustus (Prima Porta), Rembrandt'ın 1660 otoportresi, Tiepolo'nun "Aurora'nın Arabası" ve "Barbaro Ailesinin Yüceltilmesi", Hermes heykeli (The Met, CC0), NOAA bulut fotoğrafı. Kaynak: Wikimedia Commons.</p>
+  <p>Bu sayfa Claude Opus 5.5 ile kodlandı.</p>
+</footer>
+
+<script>
+(() => {
+  const AZ = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const KREM = '#F2E8D5', LACI = '#14213D';
+  const resimler = new Map();
+  const yukle = src => resimler.get(src) || resimler.set(src, new Promise((ok, hata) => {
+    const i = new Image(); i.onload = () => ok(i); i.onerror = hata; i.src = src;
+  })).get(src);
+
+  // Kaynağı canvas ızgarasına "cover" ile oturtup her hücrenin parlaklık ve saydamlığını okur.
+  function ornekle(img, sut, sat, kutu) {
+    const c = document.createElement('canvas'); c.width = sut; c.height = sat;
+    const x = c.getContext('2d', { willReadFrequently: true });
+    const oran = Math.max(sut / img.width, sat / img.height);
+    const w = img.width * oran, h = img.height * oran;
+    const ox = (sut - w) / 2, oy = kutu === 'alt' ? sat - h : (sat - h) / 2;
+    if (kutu === 'alt') { // heykel: tamamı görünsün, alta otursun
+      const o2 = Math.min(sut / img.width, sat / img.height);
+      const w2 = img.width * o2, h2 = img.height * o2;
+      x.drawImage(img, (sut - w2) / 2, sat - h2, w2, h2);
+    } else x.drawImage(img, ox, oy, w, h);
+    return x.getImageData(0, 0, sut, sat).data;
+  }
+
+  function hazirla(cv) {
+    const r = cv.getBoundingClientRect();
+    if (!r.width || !r.height) return null;
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    cv.width = Math.round(r.width * dpr); cv.height = Math.round(r.height * dpr);
+    const hucre = +cv.dataset.cell * (r.width < 500 ? .9 : 1);
+    const dy = hucre * .866; // altıgen ızgara
+    const sut = Math.ceil(r.width / hucre) + 1, sat = Math.ceil(r.height / dy) + 1;
+    return { r, dpr, hucre, dy, sut, sat };
+  }
+
+  async function bas(cv) {
+    const img = await yukle(cv.dataset.src);
+    const g = hazirla(cv); if (!g) return;
+    const kutu = cv.classList.contains('heykel') ? 'alt' : 'kapla';
+    const veri = ornekle(img, g.sut, g.sat, kutu);
+    const acik = +cv.dataset.acik, koyu = +cv.dataset.koyu, guc = +(cv.dataset.guc || 1);
+    // data-alt="a,b": noktalar sayfanın a oranından b oranına kadar belirir (bulutlar aşağıda toplanır, metin temiz kalır)
+    const [a0, a1] = (cv.dataset.alt || '-1,0').split(',').map(Number);
+    const yumusak = v => { const t = Math.min(1, Math.max(0, (v - a0) / (a1 - a0))); return t * t * (3 - 2 * t); };
+    // Otomatik seviye: görünen piksellerin %3 ve %97 parlaklığı 0 ile 1'e gerilir, böylece soluk eserler de net basılır.
+    const isik = [];
+    for (let k = 0; k < veri.length; k += 4) if (veri[k + 3] > 128) isik.push(.2126 * veri[k] + .7152 * veri[k + 1] + .0722 * veri[k + 2]);
+    isik.sort((x, y) => x - y);
+    const lo = isik[Math.floor(isik.length * .03)] || 0, hi = isik[Math.floor(isik.length * .97)] || 255;
+    const noktalar = [];
+    for (let j = 0; j < g.sat; j++) for (let i = 0; i < g.sut; i++) {
+      const k = (j * g.sut + i) * 4, a = veri[k + 3] / 255 * yumusak(j / g.sat);
+      if (a < .05) continue;
+      let L = Math.min(1, Math.max(0, ((.2126 * veri[k] + .7152 * veri[k + 1] + .0722 * veri[k + 2]) - lo) / Math.max(1, hi - lo)));
+      if ('ters' in cv.dataset) L = 1 - L; // kâğıt üstü çizim: mürekkep çizgileri krem nokta olur
+      const x = (i + (j % 2 ? .5 : 0)) * g.hucre, y = j * g.dy;
+      if (L > acik) noktalar.push([x, y, Math.pow((L - acik) / (1 - acik), .8) * a * guc, 0]);
+      else if (koyu && L < koyu) noktalar.push([x, y, Math.pow((koyu - L) / koyu, .7) * a, 1]);
+    }
+    const ctx = cv.getContext('2d');
+    const enBuyuk = g.hucre * .56;
+    const ciz = p => {
+      ctx.setTransform(g.dpr, 0, 0, g.dpr, 0, 0);
+      ctx.clearRect(0, 0, g.r.width, g.r.height);
+      for (const tur of [1, 0]) {
+        ctx.beginPath();
+        for (const [x, y, s, t] of noktalar) {
+          if (t !== tur) continue;
+          // baskı geçişi: yukarıdan aşağı, her satır kısa bir gecikmeyle dolar
+          const yerel = Math.min(1, Math.max(0, (p * 1.5 - y / g.r.height * .5)));
+          const e = 1 - Math.pow(1 - yerel, 3);
+          const rr = s * enBuyuk * e;
+          if (rr < .25) continue;
+          ctx.moveTo(x + rr, y); ctx.arc(x, y, rr, 0, 6.2832);
+        }
+        ctx.fillStyle = tur ? LACI : KREM; ctx.fill();
+      }
+    };
+    if (AZ || !('baski' in cv.dataset) || cv.dataset.basildi) { ciz(1); cv.dataset.basildi = 1; return; }
+    const t0 = performance.now(), sure = 1300;
+    const kare = t => { const p = Math.min(1, (t - t0) / sure); ciz(p); if (p < 1) requestAnimationFrame(kare); else cv.dataset.basildi = 1; };
+    requestAnimationFrame(kare);
+  }
+
+  // Yırtık kâğıt deliği: tohumlu rastgele, her yüklemede aynı şekil.
+  function yirtik() {
+    const pano = document.querySelector('.delik-pano'); if (!pano) return;
+    let tohum = 7; const rnd = () => (tohum = (tohum * 16807) % 2147483647) / 2147483647;
+    const yol = (rx, ry, cx, cy, sapma) => {
+      const n = 120, p = [];
+      for (let k = 0; k < n; k++) {
+        const a = k / n * Math.PI * 2;
+        const d = 1 + (rnd() - .5) * sapma + (k % 9 === 0 ? (rnd() - .3) * sapma * 2.2 : 0);
+        p.push(`${(cx + Math.cos(a) * rx * d).toFixed(2)}% ${(cy + Math.sin(a) * ry * d).toFixed(2)}%`);
+      }
+      return `polygon(${p.join(',')})`;
+    };
+    pano.querySelector('.delik').style.clipPath = yol(30, 21, 50, 50, .07);
+    tohum = 7;
+    pano.querySelector('.kenar-kagit').style.clipPath = yol(32.5, 23.5, 50.4, 50.8, .1);
+  }
+
+  const hepsi = [...document.querySelectorAll('canvas.ht')];
+  const gozcu = new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) { gozcu.unobserve(e.target); bas(e.target); e.target.dataset.gorundu = 1; }
+  }), { rootMargin: '300px 0px' });
+  hepsi.forEach(cv => gozcu.observe(cv));
+  yirtik();
+  let zaman, gen = innerWidth;
+  addEventListener('resize', () => {
+    if (Math.abs(innerWidth - gen) < 2) return; // mobil adres çubuğu yüksekliği değişince yeniden çizme
+    gen = innerWidth; clearTimeout(zaman);
+    zaman = setTimeout(() => hepsi.filter(c => c.dataset.gorundu).forEach(bas), 150);
+  });
+})();
+</script>
+</body>
+</html>
