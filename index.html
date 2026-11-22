@@ -2,6 +2,15 @@
 <html lang="tr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Kerem Özdemir · Videolardaki rehberler</title>
 <meta name="description" content="Her gün bir yapay zekâ ipucu. Anlattığım her şeyi önce kendim kurup deniyorum. Videolardaki ücretsiz rehberleri burada bulabilirsin.">
 <meta name="theme-color" content="#782328">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://keremozdemir12.github.io/">
+<meta property="og:title" content="Kerem Özdemir · Videolardaki rehberler">
+<meta property="og:description" content="Her gün bir yapay zekâ ipucu. Videolardaki ücretsiz rehberlerin hepsi burada.">
+<meta property="og:image" content="https://keremozdemir12.github.io/img/og.jpg">
+<meta property="og:image:width" content="1200"><meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Bordo zemin üstünde Kerem Özdemir'in baskı portresi ve 'Yapay zekânın suyunu sıkıyoruz.' yazısı">
+<meta property="og:locale" content="tr_TR">
+<meta name="twitter:card" content="summary_large_image">
 <style>
 @font-face{font-family:Young;src:url(YoungSerif.ttf);font-display:swap}
 :root{--paper:#f9f2e5;--ink:#15233b;--wine:#782328;--red:#a62932;--line:#cec3b2}
@@ -65,6 +74,7 @@ h1{font-size:clamp(3.05rem,5.4vw,5.65rem);line-height:.99;letter-spacing:-.039em
 .terminal,.pull { padding:clamp(26px,4vw,56px); color:#f9f2e5; background:#172640; }
 .terminal small,.pull small,.paper small { display:block; font-size:.9rem; margin-bottom:1em; }
 .terminal code { display:block; font-size:clamp(1rem,1.8vw,1.6rem); line-height:1.5; overflow-wrap:anywhere; }
+.terminal .nw { white-space:nowrap; }
 .pull { background:#74262a; }
 .pull p { font:400 clamp(1.5rem,2.5vw,2.35rem)/1.22 Young,Georgia,serif; }
 .pair { display:grid; gap:2px; grid-template-columns:repeat(2,minmax(0,1fr)); }
@@ -73,6 +83,17 @@ h1{font-size:clamp(3.05rem,5.4vw,5.65rem);line-height:.99;letter-spacing:-.039em
 .pair figure:nth-child(2) .crop img { width:127.4%; transform:translate(-51.8%,-37.9%); }
 .pair figcaption { padding:6px 10px; font-size:.85rem; }
 footer { min-height:80px; gap:1em; border-top:1px solid #aa9e8d; }
+.links { display:flex; flex-wrap:wrap; column-gap:1.6em; margin-top:10px; }
+.links .open { margin-top:0; }
+.open.watch { font-weight:400; }
+.follow { background:var(--wine); color:var(--paper); padding:clamp(44px,6vw,92px) 0; }
+.follow h2 { font-size:clamp(1.9rem,4.3vw,4rem); line-height:1.04; letter-spacing:-.04em; max-width:16ch; text-wrap:balance; }
+.follow p { font-size:clamp(1rem,1.35vw,1.22rem); line-height:1.48; max-width:44ch; margin-top:14px; }
+.follow-btn { display:inline-flex; align-items:center; min-height:48px; margin-top:26px; padding:0 22px; border-radius:6px; background:var(--paper); color:var(--ink); font-weight:650; transition:transform 100ms ease-out; }
+.follow-btn:hover { text-decoration:none; }
+.follow-btn:active { transform:scale(.97); }
+.follow + footer { border-top:0; }
+@media (prefers-reduced-motion:reduce) { .follow-btn { transition:none; } }
 @media(max-width:720px) {
   .social { gap:.8rem; } .social a { font-size:.85rem; }
   .story,.story:nth-of-type(even) { display:flex; flex-direction:column; align-items:stretch; gap:14px; padding:25px 0; }
@@ -129,10 +150,10 @@ footer { min-height:80px; gap:1em; border-top:1px solid #aa9e8d; }
     </div>
     <p>Sekiz damga daha toplayınca içecek ikram.</p>
   </figure>
-  <div class="story-copy"><span class="key">PLAN</span><h3>Bir kafe uygulaması, 17 gün</h3><p>Müşteri kartını gösteriyor, kasada okutunca damgası işleniyor. Rehberde bu kartı nasıl tasarladığımı ve uygulamayı App Store’a nasıl çıkardığımı anlattım.</p><a class="open" href="/17-gun/">17 günlük planı aç ↗</a></div>
+  <div class="story-copy"><span class="key">PLAN</span><h3>Bir kafe uygulaması, 17 gün</h3><p>Müşteri kartını gösteriyor, kasada okutunca damgası işleniyor. Rehberde bu kartı nasıl tasarladığımı ve uygulamayı App Store’a nasıl çıkardığımı anlattım.</p><div class="links"><a class="open" href="/17-gun/">17 günlük planı aç ↗</a><a class="open watch" href="https://www.instagram.com/reel/DfxU04TtAI9/">Videoyu izle ↗</a></div></div>
 </article>
 <article class="story" id="rehber-kurgu-kurallari"><div class="visual"><figure class="edit-detail"><figcaption><span>Ham sesten bir kesit</span><strong>Kesilen 0,36 saniye</strong></figcaption><svg viewBox="0 0 540 112" preserveAspectRatio="none" aria-hidden="true"><rect x="199.8" y="0" width="64.8" height="112" fill="#693b46"/><path d="M1.5,49.8v12.5M4.5,50.9v10.1M7.5,50.2v11.6M10.5,48.6v14.7M13.5,49.7v12.5M16.5,28.5v55.0M19.5,15.0v82.0M22.5,15.7v80.7M25.5,21.8v68.4M28.5,33.1v45.9M31.5,26.4v59.2M34.5,27.6v56.8M37.5,26.1v59.7M40.5,25.4v61.1M43.5,28.4v55.1M46.5,30.9v50.2M49.5,30.9v50.1M52.5,43.7v24.6M55.5,45.0v22.0M58.5,47.5v17.0M61.5,50.4v11.2M64.5,36.0v40.1M67.5,19.9v72.2M70.5,12.4v87.2M73.5,35.7v40.7M76.5,38.7v34.6M79.5,45.6v20.7M82.5,49.9v12.1M85.5,50.6v10.9M88.5,52.5v6.9M91.5,51.9v8.1M94.5,52.0v7.9M97.5,47.9v16.1M100.5,17.6v76.9M103.5,13.0v86.0M106.5,21.4v69.2M109.5,31.5v49.0M112.5,40.8v30.4M115.5,19.8v72.4M118.5,13.0v86.1M121.5,15.9v80.3M124.5,10.6v90.8M127.5,21.6v68.9M130.5,29.3v53.4M133.5,41.5v29.1M136.5,45.4v21.1M139.5,48.6v14.7M142.5,48.8v14.5M145.5,49.8v12.5M148.5,50.5v11.0M151.5,46.9v18.3M154.5,44.4v23.3M157.5,40.1v31.9M160.5,38.0v36.0M163.5,38.0v36.1M166.5,37.9v36.3M169.5,41.4v29.2M172.5,42.7v26.6M175.5,42.9v26.1M178.5,44.3v23.4M181.5,46.1v19.7M184.5,51.4v9.1M187.5,52.0v7.9M190.5,51.7v8.7M193.5,51.8v8.4M196.5,52.7v6.6M199.5,52.4v7.1M265.5,53.3v5.5M268.5,52.4v7.1M271.5,53.5v5.0M274.5,53.4v5.2M277.5,52.6v6.7M280.5,53.1v5.7M283.5,52.8v6.5M286.5,36.7v38.6M289.5,33.4v45.1M292.5,28.3v55.4M295.5,27.0v58.1M298.5,25.5v61.0M301.5,29.1v53.7M304.5,26.8v58.3M307.5,35.2v41.7M310.5,39.0v34.1M313.5,37.8v36.5M316.5,43.0v26.0M319.5,42.4v27.3M322.5,37.8v36.4M325.5,35.6v40.8M328.5,45.6v20.8M331.5,48.0v15.9M334.5,50.1v11.8M337.5,45.4v21.2M340.5,18.6v74.8M343.5,8.0v96.0M346.5,18.2v75.5M349.5,26.4v59.2M352.5,17.2v77.7M355.5,25.0v62.0M358.5,29.7v52.6M361.5,27.7v56.5M364.5,25.1v61.7M367.5,23.0v66.0M370.5,25.4v61.2M373.5,28.4v55.2M376.5,35.6v40.8M379.5,33.4v45.2M382.5,32.5v47.0M385.5,39.1v33.8M388.5,33.5v45.1M391.5,31.0v50.0M394.5,26.8v58.5M397.5,28.3v55.3M400.5,34.9v42.1M403.5,42.2v27.6M406.5,39.6v32.8M409.5,35.4v41.1M412.5,36.1v39.8M415.5,36.5v39.0M418.5,34.4v43.2M421.5,29.9v52.1M424.5,38.7v34.6M427.5,44.8v22.4M430.5,42.3v27.4M433.5,35.3v41.3M436.5,26.5v59.0M439.5,21.7v68.5M442.5,15.3v81.4M445.5,21.7v68.5M448.5,30.3v51.4M451.5,27.7v56.5M454.5,33.6v44.8M457.5,27.9v56.1M460.5,31.8v48.3M463.5,33.9v44.2M466.5,33.8v44.4M469.5,37.5v37.1M472.5,44.6v22.8M475.5,47.5v17.1M478.5,49.8v12.3M481.5,51.3v9.4M484.5,44.3v23.3M487.5,30.7v50.5M490.5,26.3v59.4M493.5,29.4v53.1M496.5,34.3v43.5M499.5,32.4v47.3M502.5,38.3v35.4M505.5,36.7v38.7M508.5,34.6v42.8M511.5,41.5v28.9M514.5,45.5v21.0M517.5,45.1v21.7M520.5,49.5v13.1M523.5,50.3v11.5M526.5,51.6v8.9M529.5,51.4v9.3M532.5,51.1v9.8M535.5,38.7v34.5M538.5,32.4v47.1" stroke="#f9edda" stroke-width="1.65"/><path d="M202.5,52.8v6.4M205.5,53.1v5.7M208.5,51.6v8.7M211.5,52.3v7.4M214.5,53.2v5.7M217.5,52.6v6.8M220.5,53.0v6.1M223.5,52.7v6.7M226.5,52.7v6.6M229.5,52.8v6.4M232.5,53.0v6.1M235.5,52.3v7.4M238.5,52.3v7.5M241.5,52.8v6.3M244.5,53.3v5.4M247.5,52.9v6.2M250.5,52.7v6.6M253.5,53.4v5.1M256.5,53.2v5.6M259.5,52.2v7.6M262.5,53.0v5.9" stroke="#ffb0a6" stroke-width="1.8"/><path d="M199.8,0v112M264.6,0v112" stroke="#ffb0a6" stroke-width="1.8"/></svg><div class="ruler" aria-hidden="true"><span>16 sn</span><span>17 sn</span><span>18 sn</span><span>19 sn</span></div><p>17,11 ile 17,47 saniye arasını kurgudan çıkardım.</p></figure></div><div class="story-copy"><span class="key">KURGU</span><h3>Bu videoyu Claude nasıl kesti?</h3><p>Claude’a ham çekimle birlikte bir kural dosyası veriyorum. Nerede duraksadığımı buluyor, tekrarları kesiyor. Sonra karelere bakıp neyi değiştireceğimi söylüyorum.</p><a class="open" href="/kurgu-kurallari/">Kurgu kurallarımı aç ↗</a></div></article>
-<article class="story" id="rehber-claude-skilleri"><div class="visual"><div class="terminal"><small>Turkish Native kurulumu</small><code>npx skills add oguzhankayan/turkish-native --global</code></div></div><div class="story-copy"><span class="key">SKILL</span><h3>Kullandığım 5 Claude skill’i</h3><p>Metin çeviri gibi koktuğunda Turkish Native’i, videoda ses efekti gerektiğinde kendi yazdığım skill’i açıyorum. Beşinin de kurulumunu ve ilk denemede ne isteyebileceğini yazdım.</p><a class="open" href="/claude-skilleri/">Beş skill’e bak ↗</a></div></article>
+<article class="story" id="rehber-claude-skilleri"><div class="visual"><div class="terminal"><small>Turkish Native kurulumu</small><code>npx skills add oguzhankayan/turkish-native <span class="nw">--global</span></code></div></div><div class="story-copy"><span class="key">SKILL</span><h3>Kullandığım 5 Claude skill’i</h3><p>Metin çeviri gibi koktuğunda Turkish Native’i, videoda ses efekti gerektiğinde kendi yazdığım skill’i açıyorum. Beşinin de kurulumunu ve ilk denemede ne isteyebileceğini yazdım.</p><a class="open" href="/claude-skilleri/">Beş skill’e bak ↗</a></div></article>
 <article class="story" id="rehber-yapay-zeka-videolari"><div class="visual"><figure class="playlist">
   <figcaption>İzleme sıram</figcaption>
   <ol>
@@ -145,9 +166,10 @@ footer { min-height:80px; gap:1em; border-top:1px solid #aa9e8d; }
   <figcaption>Gemini Notebook · Örnek çalışma sorusu</figcaption>
   <blockquote>Bir şirketin BT altyapısı hangi yedi bileşenden oluşur?</blockquote>
   <p>Ders slaytı · BT Altyapısı ve Gelişen Teknolojiler</p>
-</figure></div><div class="story-copy"><span class="key">GOOGLE</span><h3>Ders slaytından 10 soru</h3><p>Bir slayt yükleyip “Bu konudan bana 10 soru sor” diye başlıyorum. Rehberde Gemini Notebook, Gemini ve Antigravity için birer deneme var.</p><a class="open" href="/google-araclari/">Üç aracı incele ↗</a></div></article>
+</figure></div><div class="story-copy"><span class="key">GOOGLE</span><h3>Ders slaytından 10 soru</h3><p>Bir slayt yükleyip “Bu konudan bana 10 soru sor” diye başlıyorum. Rehberde Gemini Notebook, Gemini ve Antigravity için birer deneme var.</p><div class="links"><a class="open" href="/google-araclari/">Üç aracı incele ↗</a><a class="open watch" href="https://www.instagram.com/reel/Df_6x18tJ7p/">Videoyu izle ↗</a></div></div></article>
 <article class="story" id="rehber-fotograf-promptu"><div class="visual"><div class="pair"><figure><div class="crop"><img src="img/kaynak-portre.webp" alt="Açık renk gömlekle çekilmiş kaynak portre" class="" loading="lazy"></div><figcaption>Kaynak fotoğraf</figcaption></figure><figure><div class="crop"><img src="img/tokyo-portre.webp" alt="Gemini ile üretilen Tokyo sokağı sahnesi" class="" loading="lazy"></div><figcaption>Gemini ile Tokyo</figcaption></figure></div></div><div class="story-copy"><span class="key">PROMPT</span><h3>Aynı fotoğrafla Tokyo’da</h3><p>Videoda kullandığım bu iki karenin ilki kaynak fotoğraf, ikincisini Gemini üretti. Rehberde yüzünü korumak için kullandığım prompt ve değiştirebileceğin sahneler var.</p><a class="open" href="/fotograf-promptu/">Fotoğraf promptunu aç ↗</a></div></article>
 <article class="story" id="rehber-cv-promptu"><div class="visual"><div class="pull"><small>Promptun içinden</small><p>“İlanda geçen beceri ve anahtar kelimeleri, CV’mde gerçekten karşılığı olan yerlerde kullan.”</p></div></div><div class="story-copy"><span class="key">CV</span><h3>Bir ilan seç, CV’ni ona göre düzenle</h3><p>İlandaki her beceriyi CV’ye ekletmek kolay. Ben önce hangilerinin deneyimimde karşılığı olduğunu bulduruyorum. Sonra eski ve yeni maddeleri yan yana okuyorum.</p><a class="open" href="/cv-promptu/">CV promptunu aç ↗</a></div></article></main>
+<section class="follow" aria-labelledby="takip"><div class="wrap"><h2 id="takip">Yeni rehberler önce videoda çıkıyor.</h2><p>Her gün bir yapay zekâ ipucu paylaşıyorum. Videonun altına anahtar kelimeyi yazarsan rehberi DM’den gönderiyorum.</p><a class="follow-btn" href="https://www.instagram.com/itskeremozdemir/">Instagram’da takip et ↗</a></div></section>
 <footer class="wrap"><span>Kerem Özdemir</span><div class="social">
   <a href="https://www.instagram.com/itskeremozdemir/">Instagram</a>
   <a href="https://www.youtube.com/@itskeremozdemir">YouTube</a>
